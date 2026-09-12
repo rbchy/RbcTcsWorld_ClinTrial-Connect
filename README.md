@@ -1,7 +1,7 @@
 # RbcTcsWorld_ClinTrial-Connect
-<p align="center">
-  <img src="docs/banner.svg" alt="ClinTrial Connect banner" width="100%">
-</p>
+<img width="1200" height="260" alt="banner_preview" src="https://github.com/user-attachments/assets/8f02f95d-a537-4dfb-a354-84739129fc30" />
+
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-17-orange?logo=java&style=for-the-badge" alt="Java 17"/>
