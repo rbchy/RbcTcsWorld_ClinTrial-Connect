@@ -1,0 +1,47 @@
+<svg width="1200" height="260" viewBox="0 0 1200 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ClinTrial Connect banner">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488"/>
+      <stop offset="55%" stop-color="#155e75"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5eead4"/>
+      <stop offset="100%" stop-color="#a5f3fc"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="260" rx="28" fill="url(#bg)"/>
+
+  <!-- subtle decorative circles -->
+  <circle cx="1120" cy="40" r="90" fill="#ffffff" opacity="0.05"/>
+  <circle cx="1080" cy="220" r="60" fill="#ffffff" opacity="0.05"/>
+
+  <!-- pulse / heartbeat line merging into a checkmark: clinical + QA testing motif -->
+  <g transform="translate(660,90) scale(0.8)" fill="none" stroke="url(#pulse)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0,60 H50 L70,20 L95,100 L120,10 L140,60 H175"/>
+    <path d="M175,60 L200,85 L245,25" stroke="#facc15" stroke-width="9"/>
+  </g>
+
+  <!-- Title -->
+  <text x="60" y="165" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="56" font-weight="700" fill="#ffffff" letter-spacing="0.5">
+    ClinTrial Connect
+  </text>
+
+  <!-- Tagline -->
+  <text x="63" y="200" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="400" fill="#ccfbf1" opacity="0.9">
+    Clinical-Trial Patient Matching · Built as a QA Automation Practice Project
+  </text>
+
+  <!-- Stat chips -->
+  <g font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif" font-size="16" font-weight="600">
+    <rect x="63" y="215" width="110" height="30" rx="15" fill="#ffffff" opacity="0.12"/>
+    <text x="80" y="235" fill="#ffffff">115 Tests</text>
+
+    <rect x="185" y="215" width="150" height="30" rx="15" fill="#ffffff" opacity="0.12"/>
+    <text x="202" y="235" fill="#ffffff">100% Passing</text>
+
+    <rect x="347" y="215" width="230" height="30" rx="15" fill="#ffffff" opacity="0.12"/>
+    <text x="364" y="235" fill="#ffffff">Java · Spring Boot · MySQL</text>
+  </g>
+</svg>
