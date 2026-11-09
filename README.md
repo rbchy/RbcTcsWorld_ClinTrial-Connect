@@ -5,6 +5,7 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com/?font=Fira+Code&size=18&pause=1500&color=FFC107&center=true&vCenter=true&width=900&repeat=true&lines=Clinical-trial+patient+matching+%C2%B7+Spring+Boot+3+%C2%B7+MySQL;115+%2F+115+automated+tests+%C2%B7+23+suites+%C2%B7+Allure;Unit+%C2%B7+JPA+%C2%B7+MockMvc+%C2%B7+Security+%C2%B7+Cucumber+%C2%B7+Selenium+%C2%B7+JMeter)](https://git.io/typing-svg)
 
 <!-- ============ STATUS BAR ============ -->
+[![CI](https://github.com/rbchy/RbcTcsWorld_ClinTrial-Connect/actions/workflows/tests.yml/badge.svg)](https://github.com/rbchy/RbcTcsWorld_ClinTrial-Connect/actions/workflows/tests.yml)
 ![Tests](https://img.shields.io/badge/Automated%20Tests-115%20%2F%20115%20passing-22c55e?style=for-the-badge&logo=checkmarx&logoColor=white)
 ![Suites](https://img.shields.io/badge/Suites-23-0d9488?style=for-the-badge)
 ![Manual Cases](https://img.shields.io/badge/Manual%20Test%20Cases-67-155e75?style=for-the-badge)
@@ -90,6 +91,8 @@ It is a **QA practice project first**: a fully self-owned system that can legiti
 | Data & load | DB integrity over plain JDBC; browse and login under load | JDBC · Apache JMeter |
 
 **Largest suites** (from the Allure overview): `MatchingServiceTest` 17 · `RoleAccessSecurityTest` 9 · `PublicPagesTest` 8 · `PatientRegistrationFormValidationTest` 7 · `RegistrationControllerTest` 7 · `ContactFormValidationTest` 6 · `AdminControllerTest` 6.
+
+**CI on every push** ([workflow](.github/workflows/tests.yml)): the dependency-free [`AlgoCheck`](verify-algorithm/AlgoCheck.java) runs 12 scoring cases, `pom.xml` and all its dependencies must resolve, and the JMeter plan must be well-formed XML. The full `mvn test` (the 115 tests above) switches on automatically once `src/` is in the repository.
 
 📄 Allure exports: [Overview](Allure%20Report%20Overview.pdf) · [Suites](Allure%20Report%20Suites.pdf) · [Behaviors](Allure%20Report%20Behavior.pdf) · [Packages](Allure%20Report%20Packages.pdf) · [Graphs](Allure%20Report%20Graphs.pdf)
 
@@ -294,6 +297,7 @@ RbcTcsWorld_ClinTrial-Connect/
 │   └── README.md
 ├── verify-algorithm/AlgoCheck.java      dependency-free check of the scoring logic
 ├── docs/banner.svg
+├── .github/workflows/tests.yml          CI: algorithm check, Maven build, JMeter plan
 └── LICENSE                              MIT
 ```
 
