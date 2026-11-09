@@ -1,0 +1,64 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  algorithm:
+    name: Matching algorithm check (AlgoCheck, 12 cases)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Compile and run
+        run: |
+          javac -d out verify-algorithm/AlgoCheck.java
+          java -cp out AlgoCheck
+
+  build:
+    name: Maven build (full test suite once src/ is in the repo)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Run tests, or check the build file until src/ is uploaded
+        run: |
+          if [ -d src ]; then
+            mvn -B --no-transfer-progress test
+          else
+            echo "::notice::src/ is not in the repository yet - checking that pom.xml resolves instead of running tests"
+            mvn -B --no-transfer-progress validate dependency:resolve
+          fi
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            target/surefire-reports/
+            target/allure-results/
+          if-no-files-found: ignore
+
+  load-plan:
+    name: JMeter plan is well-formed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate perf/clintrial-load-test.jmx
+        run: |
+          sudo apt-get install -y -qq libxml2-utils >/dev/null
+          xmllint --noout perf/clintrial-load-test.jmx
+          echo "Thread groups:"; grep -o 'testname="[^"]*([0-9]* users)"' perf/clintrial-load-test.jmx
